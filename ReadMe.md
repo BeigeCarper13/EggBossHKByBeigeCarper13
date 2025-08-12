@@ -1,4 +1,4 @@
-# AggBossHKByBeigeCarper13
+# EggBossHKByBeigeCarper13
 
 A mod for the game Hollow Knight that adds new exciting boss -- EggBoss!
 
