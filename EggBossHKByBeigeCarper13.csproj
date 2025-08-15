@@ -52,6 +52,14 @@
     <WriteLinesToFile File="$(ExportDir)/$(TargetName)/SHA.txt" Lines="$(OutputFileString);@(FilesWithHashes->'%(FileHash)');$(OutputZipString);@(ZipFilesWithHashes->'%(FileHash)')" Overwrite="true" Encoding="UTF-8" />
   </Target>
   <ItemGroup>
+    <None Remove="asset_bundles\eggboss_assets" />
+    <None Remove="asset_bundles\eggboss_scene" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="asset_bundles\eggboss_assets" />
+    <EmbeddedResource Include="asset_bundles\eggboss_scene" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(HollowKnightRefs)/Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -323,12 +331,6 @@
       <HintPath>$(HollowKnightRefs)/UnityEngine.XRModule.dll</HintPath>
     </Reference>
   </ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Include="D:\OuterAssets\bgSphereAssets\eggbossscene" />
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Include="D:\OuterAssets\bgSphereAssets\eggboss_assets" />
-	</ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="ReadMe.md" />

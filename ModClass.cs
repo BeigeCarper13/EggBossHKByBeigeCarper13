@@ -11,7 +11,7 @@ namespace EggBossHKByBeigeCarper13
     {
         internal static EggBossHKByBeigeCarper13 Instance;
         public static FsmTemplate health_manager_enemy;
-        public static AssetBundle AbOverallMat { get; private set; } = null;
+        public static AssetBundle EggBossScene { get; private set; } = null;
         public string modname;
         public static AssetBundle EggBossAssets;
         private GameObject ShadeGOSave;
@@ -92,21 +92,25 @@ namespace EggBossHKByBeigeCarper13
         {
 
             Assembly asm = Assembly.GetExecutingAssembly();
-            using (Stream s = asm.GetManifestResourceStream("EggBossHKByBeigeCarper13.eggbossscene"))
+            using (Stream s = asm.GetManifestResourceStream("EggBossHKByBeigeCarper13.asset_bundles.eggboss_scene"))
             {
                 if (s != null)
                 {
-                    AbOverallMat = AssetBundle.LoadFromStream(s);
+                    Log(1);
+                    EggBossScene = AssetBundle.LoadFromStream(s);
+                    Log(EggBossScene);
+
+                    Log(EggBossScene);
                 }
-                else { Log("can`t found eggbossscene"); }
+                else { LogError("can`t found eggboss_scene"); }
             }
-            using (Stream s = asm.GetManifestResourceStream("EggBossHKByBeigeCarper13.eggboss_assets"))
+            using (Stream s = asm.GetManifestResourceStream("EggBossHKByBeigeCarper13.asset_bundles.eggboss_assets"))
             {
                 if (s != null)
                 {
                     EggBossAssets = AssetBundle.LoadFromStream(s);
                 }
-                else { Log("can`t found eggboss_assets"); }
+                else { LogError("can`t found eggboss_assets"); }
             }
         }
     }

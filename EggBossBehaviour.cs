@@ -8,6 +8,7 @@ using System.Runtime.Remoting;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using Modding;
 using UnityEngine.SocialPlatforms;
 using static tk2dSpriteCollectionDefinition;
 using static UnityEngine.UI.Image;
@@ -51,7 +52,7 @@ namespace EggBossHKByBeigeCarper13
             {
                 yield return new WaitForEndOfFrame();
                 try { PlayerObj = GameObject.FindGameObjectsWithTag("Player")[0]; }
-                catch { }
+                catch { Modding.Logger.LogError("Can`t find player gameobject");  }
             }
             while (transform.position.x - PlayerObj.transform.position.x > 7f)
             {
@@ -95,7 +96,8 @@ namespace EggBossHKByBeigeCarper13
                         animSprites.Add(i.name.Substring("anim_".Length),
                             Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 500f));
                     }
-                    catch { }
+                    catch { Modding.Logger.LogError("Idk why, but in some reason sprites in the eggboss_assets asset bundle have copies with the same name and they cause:" +
+                        " Error while creating animation sprites from eggboss_assets"); }
                 }
                 if (i.name.Contains("end_explosion"))
                 {
@@ -112,6 +114,7 @@ namespace EggBossHKByBeigeCarper13
                     }
                     catch
                     {
+                        Modding.Logger.LogError("Error while creating end explosion sprites from eggboss_assets");
                     }
                 
                 }
@@ -130,6 +133,7 @@ namespace EggBossHKByBeigeCarper13
                     }
                     catch
                     {
+                        Modding.Logger.LogError("Error while loading audio from eggboss_assets");
                     }
                 }
             }
